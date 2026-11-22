@@ -1,0 +1,14 @@
+PASS homogeneous formula and f, g  max rel err 3.11e-39
+PASS random rings obey Theorem 2, k=3..6  1500 rings, min A_k/bound: k=3:1.0, k=4:1.0, k=5:1.0, k=6:1.0
+PASS contraction n=4 -> m=2  |A3-f|+|A4-g| at R=1e3,1e6: 0.0906, 9.25e-5
+PASS contraction n=5 -> m=3  |A3-f|+|A4-g| at R=1e3,1e6: 0.0212, 2.13e-5
+PASS contraction n=5 -> m=4  |A3-f|+|A4-g| at R=1e3,1e6: 0.00438, 4.4e-6
+PASS quadratic arc: M_k = f_{k-1} - q f_{k-2}  max err 9.18e-41
+PASS quadratic arc: no interior minimum of Q_k, k=3..8
+PASS one-gap cubic arc: no interior minimum of Q_k, k=3..8  40 arc points
+PASS one-gap quartic representation  err 1.03e-40, ordering x2<q<x3: True
+PASS z_3, z_4, absolute minima  z3=1.150671321 z4=1.320668895 Smin=3.90972893 Kmin=25.09133748
+PASS H_k(j;F) decreases then increases in j, k=3..8
+PASS F->0 limit 2^{k/2-1}(2k-3)!!, k=3..8 (S->3sqrt2, K->30)  max rel err 1.54e-25
+
+ALL PASS
