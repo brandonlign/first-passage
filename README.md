@@ -16,8 +16,8 @@ $$
 where
 
 $$
-f(x)=2\sqrt{x}\,\frac{1+4e^x+e^{2x}}{\sqrt{(e^x-1)(1+e^x)^3}}, \qquad
-g(x)=6x\,\frac{1+8e^x+e^{2x}}{e^{2x}-1}
+f(x)=2\sqrt{x}\frac{1+4e^x+e^{2x}}{\sqrt{(e^x-1)(1+e^x)^3}}, \qquad
+g(x)=6x\frac{1+8e^x+e^{2x}}{e^{2x}-1}
 $$
 
 are the values for the homogeneous $m$-state cycle. Both bounds are sharp at
