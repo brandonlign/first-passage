@@ -1,6 +1,6 @@
 # Sharp lower bounds on first-passage skewness and kurtosis in unicyclic networks
 
-Brandon Li
+Brandon Li and Ethan Yeroushalmi
 
 Paper and verification code proving the lower-envelope conjectures of
 Wampler and Barato ([J. Phys. A 55, 014002, 2022](https://doi.org/10.1088/1751-8121/ac3b0c)).

@@ -6,7 +6,10 @@ authors:
   - family-names: Li
     given-names: Brandon
     email: brandon.li.gn@gmail.com
-    affiliation: "Great Neck, NY, USA"
+    affiliation: "Independent researcher, Great Neck, New York, USA"
+  - family-names: Yeroushalmi
+    given-names: Ethan
+    affiliation: "Independent researcher, Great Neck, New York, USA"
 repository-code: "https://github.com/brandonlign/first-passage"
 license: MIT
 keywords:
@@ -20,5 +23,7 @@ preferred-citation:
   authors:
     - family-names: Li
       given-names: Brandon
+    - family-names: Yeroushalmi
+      given-names: Ethan
   title: "Sharp lower bounds on first-passage skewness and kurtosis in unicyclic networks"
   year: 2026
