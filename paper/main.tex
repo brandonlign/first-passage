@@ -41,7 +41,9 @@ $k\ge3$, where it is expressed through Legendre polynomials. The bounds are
 sharp at exactly $n$ states; when a smaller cycle is optimal, they are
 approached by making the excess states fast. The optimal number of effective
 states is one of two explicit adjacent integers, and it runs through
-$1,2,\dots,n$ without skips as $F$ grows. For stationary initial conditions
+$1,2,\dots,n$ without skips as $F$ grows. Over all unicyclic networks this
+gives $S\ge3.9097\ldots$ and $K\ge25.091\ldots$, constants that were
+previously known only numerically. For stationary initial conditions
 the large-threshold limit is uniform in the rates. The proof encodes the
 passage-time law in a single real polynomial with a band-and-gap structure
 and rules out every inhomogeneous minimizer by first- and second-order
@@ -59,8 +61,8 @@ systems the fluctuations of time-integrated currents, and of first-passage
 times (the waiting times for a current to reach a threshold), are
 constrained by the entropy they produce. The thermodynamic uncertainty
 relation bounds the relative variance of a current by the inverse entropy
-production, and its first-passage version bounds the variance of the time a
-current needs to reach a threshold~\cite{gh,garrahan}. For unicyclic
+production~\cite{bstur,gingrich}, and its first-passage version bounds the variance of the time a
+current needs to reach a threshold~\cite{garrahan,gh}. For unicyclic
 networks the variance bound sharpens to an affinity-dependent
 hyperbolic-cotangent bound~\cite{pbs,pbsproof}, attained by homogeneous
 cycles, in which all forward rates are equal and all backward rates are
@@ -69,7 +71,10 @@ equal.
 Beyond the variance, the shape of a first-passage distribution is described
 by its skewness and excess kurtosis. For enzymatic cycles with an
 irreversible step, Barato and Seifert identified lower bounds on these
-quantities~\cite{bs}. Wampler and Barato~\cite{wb} then studied the
+quantities~\cite{bs}, and Ptaszy\'nski derived and numerically conjectured
+bounds on the skewness and kurtosis of steady-state currents, including the
+winding current of unicyclic networks~\cite{ptaszynski}. Wampler and
+Barato~\cite{wb} then studied the
 first-passage time $T_J$ of entropy production through a threshold $J$ in a
 general unicyclic network with $n$ states and affinity $F$. Scaling by the
 threshold keeps the statistics finite as $J\to\infty$:
@@ -109,9 +114,9 @@ below by the minimum over homogeneous cycles with at most $n$ states
 also identify the optimal homogeneous branch: at each order $k$ the optimal
 state count is one of two adjacent integers near $F/(2z_k)$ for an explicit
 constant $z_k$, and it steps through $1,2,\dots,n$ in order as $F$ increases
-(Theorem~\ref{thm:selector}). Letting $n\to\infty$ recovers the absolute
-lower bounds $S\ge3.9097\ldots$ and $K\ge25.091\ldots$ observed numerically
-in~\cite{wb} (Corollary~\ref{cor:absolute}).
+(Theorem~\ref{thm:selector}). Letting $n\to\infty$ proves the absolute
+lower bounds $S\ge3.9097\ldots$ and $K\ge25.091\ldots$, which were
+observed numerically in~\cite{wb} (Corollary~\ref{cor:absolute}).
 
 Our approach turns the stochastic problem into a variational problem for a
 single real polynomial. Combining the inversion relation between currents
@@ -183,7 +188,8 @@ T_J=\inf\{t\ge0:\ \Phi(X_t)-\Phi(X_0)\ge J\}.
 \]
 Its large-$J$ statistics are governed by the \emph{period passage time}
 $\tau$, the first time the lifted walk started at $x$ reaches $x+n$, that
-is, the time needed to complete one net forward cycle. The law of $\tau$
+is, the time needed to complete one net forward cycle; its moments for
+reversible cycles were studied in~\cite{wierenga}. The law of $\tau$
 does not depend on $x$ (Section~\ref{sec:threshold}), and successive period
 passages are independent and identically distributed. The next proposition
 shows that each cumulant of $T_J$ grows linearly in the number $J/F$ of
@@ -395,9 +401,11 @@ C=\cosh\frac F2,\qquad D=\sinh\frac F2,\qquad
 h(s)=C+\frac{\det(sI-Q)}{2\sqrt{PM}}.
 \end{equation}
 Here $h(s)$ is a real polynomial of degree $n$ that combines the spectrum of
-the generator with the driving force $F$. Tilting the forward rates by $z$
-and the backward rates by $z^{-1}$ gives the standard
-identity~\cite{wb}
+the generator with the driving force $F$. Tilting by $z$ per net forward
+cycle, that is, multiplying the forward rate of one edge by $z$ and the
+backward rate of that edge by $z^{-1}$, defines the tilted generator
+$Q(z)$; distributing the tilt over several edges changes $Q(z)$ only by a
+diagonal similarity. This gives the standard identity~\cite{wb}
 \begin{equation}\label{eq:tilt}
 \det(sI-Q(z))=\det(sI-Q)+P+M-Pz-Mz^{-1},
 \end{equation}
@@ -422,15 +430,21 @@ We construct a martingale of the form $e^{-st}\phi_s(X_t)$ on the lifted
 walk and stop it at $\tau$. For a function $\phi$ on $\mathbb Z$, the
 equation $p_x\phi(x+1)-(s+p_x+q_x)\phi(x)+q_x\phi(x-1)=0$ is a periodic
 second-order recurrence. Propagating $(\phi(x),\phi(x-1))$ across one
-period defines a $2\times2$ transfer matrix, whose determinant is $M/P$ and
-whose trace is $[\det(sI-Q)+P+M]/P$ by~\eqref{eq:tilt}. Its eigenvalues,
-the Floquet multipliers $z$ (the factor by which a quasi-periodic solution
-is multiplied over one period), therefore solve
-$Pz+Mz^{-1}=\det(sI-Q)+P+M$.
+period defines a $2\times2$ transfer matrix with determinant $M/P$. Its
+eigenvalues are the Floquet multipliers $z$, the factors by which
+quasi-periodic solutions $\phi(x+n)=z\phi(x)$ are multiplied over one
+period. Such a solution exists exactly when $(\phi(1),\dots,\phi(n))$ lies
+in the kernel of $sI-Q(z)$, so by~\eqref{eq:tilt} the multipliers solve
+$Pz+Mz^{-1}=\det(sI-Q)+P+M$, and the trace of the transfer matrix is
+$[\det(sI-Q)+P+M]/P$.
 
 At $s=0$ the two multipliers are $1$ and $M/P<1$, so the multiplier $z(s)$
-with $z(0)=1$ is simple and analytic near $s=0$. For small $s>0$ the
-corresponding Floquet solution $\phi_s$ is positive, satisfies
+with $z(0)=1$ is simple and analytic near $s=0$. Differentiating the
+multiplier equation at $s=0$ gives
+$(P-M)z'(0)=\frac{\dd}{\dd s}\det(sI-Q)\big|_{s=0}>0$, because $0$ is a simple
+eigenvalue of $Q$ and the other eigenvalues have negative real part. The
+Floquet solution at $s=0$ is constant, so for small $s>0$ the continued
+solution $\phi_s$ is positive, satisfies
 $\phi_s(x+n)=z(s)\phi_s(x)$ with $z(s)>1$, and is bounded on the half-line
 to the left of the target. Optional stopping of the bounded martingale
 $e^{-st}\phi_s(X_t)$ at $\tau$ gives $\E e^{-s\tau}=z(s)^{-1}$.
@@ -584,7 +598,9 @@ Minimizing $A_k$ is therefore the same as minimizing the dimensionless
 ratio $Q_k$. By Lemmas~\ref{lem:compact} and~\ref{lem:moments}, $Q_k$ is
 continuous on the compact set $\HH_n$ and attains its minimum. The core of
 the proof is the following classification: only the gapless (homogeneous)
-polynomials minimize $Q_k$.
+polynomials minimize $Q_k$. These are the affine Chebyshev polynomials
+$h_1,\dots,h_n$ of degrees $1,\dots,n$, written out in~\eqref{eq:cheb} of
+Section~\ref{sec:homog}.
 
 \begin{theorem}\label{thm:poly}
 Let $k\ge3$ and $n\ge1$. Every minimizer of $Q_k$ on $\HH_n$ is one of the
@@ -622,7 +638,7 @@ L(p)=\sum_{i\in I}\lambda_i\,\sigma_i\,x_i^2\,p(x_i)\qquad
 \begin{proof}
 By Lemma~\ref{lem:compact}, near $h$ the class is cut out by the smooth
 inequalities $\sigma_ih(x_i(h))\ge1$, $i\in I$, the open gaps being
-inactive constraints. Their differentials are $p\mapsto x_i^2p(x_i)$. Since
+inactive constraints. Their differentials are $p\mapsto\sigma_ix_i^2p(x_i)$. Since
 $|I|\le m-1=\dim\mathbb R_{m-2}[s]$ and the $x_i$ are distinct and nonzero,
 Lagrange interpolation (a polynomial of degree at most $m-2$ can take any
 prescribed values at $m-1$ distinct points) shows that these functionals
@@ -743,7 +759,8 @@ On this curve the closed critical points cancel between $h'$ and
 $\sqrt{h^2-1}$ in $\gamma'=h'/\sqrt{h^2-1}$, since each is a double zero of
 $h^2-1$. The four remaining simple zeros of $h^2-1$ are the two outer band
 edges and the two ends of the open gap. Writing them as $-1/x_i$ and using
-$\gamma'(0)=1$,
+$\gamma'(0)=1$ (from here on $x_1,\dots,x_4$ denote these reciprocal band
+edges, not critical points),
 \begin{equation}\label{eq:quartic}
 \gamma'(-t)=\frac{1-qt}{\sqrt{\mathcal P(t)}},\qquad
 \mathcal P(t)=\prod_{i=1}^4(1-x_it),\qquad
@@ -752,17 +769,22 @@ $\gamma'(0)=1$,
 Here $x_1,x_2$ come from the left outer edge and the left end of the gap,
 and $x_3,x_4$ from the right end of the gap and the right outer edge.
 
-To follow $Q_k$ along the flow, let $G(t)=\mathcal P(t)^{-1/2}=\sum_{r\ge0}f_rt^r$
+To follow $Q_k$ along the flow, let $G(t)=\mathcal P(t)^{-1/2}=\sum_{r\ge0}f_rt^r$,
+which replaces the polynomial $G$ of~\eqref{eq:flow} from here on,
 and $c=\frac12\sum_ix_i$. Comparing $\gamma'(-t)=\sum_jM_jt^{j-1}$
 with~\eqref{eq:quartic} gives $M_j=f_{j-1}-qf_{j-2}$, and in particular
-$c=v+q$ from the coefficient of $t$. Summing~\eqref{eq:vflow} as a geometric
-series gives, for $H(t)=(1-qt)G(t)=\sum_jM_jt^{j-1}$,
+$c=v+q$ from the coefficient of $t$. Let $H(t)=(1-qt)G(t)=\sum_jM_jt^{j-1}$.
+Since $\sum_{j>i}q^{j-1-i}t^j=t^{i+1}/(1-qt)$, multiplying~\eqref{eq:vflow}
+by $t^{j-1}$ and summing over $j$ gives
+$H'=\frac12\partial_t\bigl(t^2H/(1-qt)\bigr)=\frac12\partial_t(t^2G)$, that is,
 \begin{equation}\label{eq:Hv}
 H'=tG+\tfrac12t^2\partial_tG,\qquad\text{equivalently}\qquad
 (1-qt)\,\mathcal P'=\eta\,t\,\mathcal P+\tfrac12t^2\partial_t\mathcal P,
 \end{equation}
-where $\mathcal P'$ is the derivative with respect to $v$ at fixed $t$, and
-$c'=1+q'=-\eta/2$. Finally, $M_k'=\frac k2f_{k-2}$ and
+where $\mathcal P'$ is the derivative with respect to $v$ at fixed $t$; the
+second form follows by substituting $H=(1-qt)\mathcal P^{-1/2}$ and
+$q'=-1-\eta/2$. Also $c'=1+q'=-\eta/2$. Reading off the coefficient of
+$t^{k-1}$ in the first form gives $M_k'=\frac k2f_{k-2}$, and
 \begin{equation}\label{eq:Ek}
 Q_k'=-\frac{k\,E_k}{2v^{k/2+1}},\qquad
 E_k=M_k-\frac{2v}kM_k'=f_{k-1}-cf_{k-2}=[t^{k-1}]\,(1-ct)G(t).
@@ -772,7 +794,7 @@ shows that this can only happen when $x_4>c$; Section~\ref{sec:proof} uses
 this to find the sign of $Q_k''$.
 
 \begin{lemma}[Localization]\label{lem:local}
-If $x_4\le c$, then $E_k<0$ for every $k\ge2$.
+If $x_4\le c$, then $E_k<0$ for every $k\ge3$.
 \end{lemma}
 
 \begin{proof}
@@ -783,8 +805,9 @@ Using $\partial_tG/G=\frac12\sum_ix_i/(1-x_it)$ and $\sum_ix_i=2c$,
 \]
 If $x_4\le c$ then every $x_i-c\le0$, with strict inequality for $i\le3$.
 Since $G$ and each $1/(1-x_it)$ have positive coefficients, every
-coefficient of $t^r$, $r\ge1$, on the right is negative. Hence
-$[t^{k-1}](1-ct)G<0$ for $k\ge2$.
+coefficient of $t^r$, $r\ge1$, on the right is negative. Integrating term
+by term gives $[t^{k-1}](1-ct)G<0$ for $k\ge3$. (For $k=2$,
+$E_2=f_1-cf_0=0$.)
 \end{proof}
 
 \section{Homogeneous cycles and sharpness}\label{sec:homog}
@@ -806,7 +829,14 @@ h_m(s)=T_m\Bigl(\cosh\theta+\frac sm\sinh\theta\Bigr),\qquad
 \theta=\frac F{2m},
 \end{equation}
 where $T_m(\cosh z)=\cosh(mz)$. This is the spectral polynomial of the
-homogeneous $m$-state cycle at affinity $F$, and
+homogeneous $m$-state cycle at affinity $F$. Indeed, for forward rate $a$
+and backward rate $b$ with $a/b=e^{2\theta}$, distributing the tilt
+$z=e^{-F/2+i\phi}$ equally over the $m$ edges makes $Q(z)$ circulant with
+eigenvalues $-(a+b)+2\sqrt{ab}\cos\frac{\phi+2\pi r}m$, $r=0,\dots,m-1$.
+The product formula
+$\prod_r\bigl[2X-2\cos\frac{\phi+2\pi r}m\bigr]=2T_m(X)-2\cos\phi$,
+valid for all $X$, and~\eqref{eq:tilt} then give $h(s)=T_m\bigl((s+a+b)/(2\sqrt{ab})\bigr)$,
+and rescaling time to $\E\tau=1$ gives~\eqref{eq:cheb}. Moreover
 $\gamma_m(s)=m\acosh(\cosh\theta+\frac sm\sinh\theta)-F/2$. Therefore
 \[
 \gamma_m'(-t)=\Bigl(1-\frac{2c_mt}m+\frac{t^2}{m^2}\Bigr)^{-1/2},\qquad
@@ -850,7 +880,11 @@ $sI-Q_R$ splits into a slow (between-block) and a fast (within-block) part,
 sI-Q_R=\begin{pmatrix}sI_m-B_{00}&-B_{01}\\-B_{10}&R\Lambda+sI-B_{11}
 \end{pmatrix},
 \]
-with $\Lambda$ positive definite and $\det\Lambda=\prod_iL_i$. On every
+with $\Lambda$ positive definite and $\det\Lambda=\prod_iL_i$. Indeed,
+$\Lambda$ is the Laplacian of the internal edges restricted to the
+complement of the block indicators, and by the matrix-tree theorem the
+nonzero eigenvalues of the Laplacian of a path on $L_i$ vertices multiply
+to $L_i$ times its number of spanning trees, which is one. On every
 fixed disk $|s|\le\rho$, $(R\Lambda+sI-B_{11})^{-1}=R^{-1}\Lambda^{-1}
 +O(R^{-2})$. The Schur complement formula, which writes the determinant of
 a block matrix as the determinant of the fast block times that of an
@@ -896,8 +930,11 @@ We show that $E_k$, which has the opposite sign of $Q_k'$, is negative or
 strictly increasing along the arc, so that every interior critical point of
 $Q_k$ is a strict maximum. Let $T=\coth(F/4)$ and
 $c=\frac12(T+T^{-1})=\coth(F/2)$. For a quadratic $h$
-satisfying~\eqref{eq:normal}, the variance ranges over $[T/2,c]$, with
-$v=T/2$ at $h_2$ and $v=c$ at $h_1$. Put $q=c-v$. A direct computation of
+satisfying~\eqref{eq:normal}, put $q=c-v$. Differentiating
+$\gamma'=h'/\sqrt{h^2-1}$ at $s=0$ gives $h(s)=C+Ds+\frac12Dqs^2$. Membership
+in $\HH_n$ requires $q\ge0$ and the critical value $h(-1/q)=C-D/(2q)$ to be at
+most $-1$, that is, $q\le D/(2(C+1))=1/(2T)$. So the variance ranges over
+$[T/2,c]$, with $v=T/2$ at $h_2$ and $v=c$ at $h_1$. A direct computation of
 $h^2-1$ gives~\eqref{eq:quartic} with this $q$ and
 \[
 \mathcal P(t)=\Bigl(1-Tt+\frac{Tq}2t^2\Bigr)\Bigl(1-\frac tT+\frac q{2T}t^2
@@ -987,8 +1024,10 @@ reciprocal numerator of $K$ is
 \mathcal R(y)=2\eta v\,\mathcal S(y)+(y-c)\sum_{i=1}^4x_i\prod_{j\ne i}(y-x_j)
 =(y-q)\,y^3K(1/y).
 \]
-Since $x_3<c<a$, the values of $\mathcal R$ at $x_1,x_2,x_3,x_4$ have signs
-$+,-,+,+$, and $\mathcal R(c)=2\eta v\mathcal S(c)<0$ because $\eta v>0$.
+Since the $x_i$ are positive with $\sum_ix_i=2c$ and $a>c$, we have
+$x_3<2c-a<c$, so $x_3<c<a$. Hence the values of $\mathcal R$ at
+$x_1,x_2,x_3,x_4$ have signs $+,-,+,+$, and
+$\mathcal R(c)=2\eta v\mathcal S(c)<0$ because $\eta>m-2\ge1$ and $v>0$.
 So the four roots of $\mathcal R$ lie in $(x_1,x_2)$, $(x_2,x_3)$, $(x_3,c)$
 and $(c,a)$, and the one in $(x_2,x_3)$ is $q$. Hence
 $K(t)=K(0)\prod_{j=1}^3(1-y_jt)$ with $y_1\in(x_1,x_2)$, $y_2\in(x_3,c)$
@@ -1124,7 +1163,10 @@ entropy first-passage time $T_J$ to the period passage time $\tau$. For
 fixed rates the idea is simple: once $J$ exceeds the bounded fluctuation of
 the entropy potential within a period, crossing the threshold means hitting
 one particular site of the lifted walk, and that hitting time splits into
-independent edge passages.
+independent edge passages. Martingale methods give large-threshold expressions for
+first-passage cumulants of general time-additive observables~\cite{neri};
+here the unicyclic structure makes the limit exact up to a bounded
+correction.
 
 \begin{proof}[Proof of Proposition~\ref{prop:threshold}, fixed rates]
 Let $\omega$ be the oscillation (maximum minus minimum) of the periodic
@@ -1184,10 +1226,13 @@ most $C_j(1+d_i)^j$ by the uniform bounds on the period cumulants.
 
 The remaining phases have total weight at most $ne^{-J}$, and their
 quotient jets (derivatives at $s=0$) are $O((1+N_J)^j)$ by pathwise
-domination. Since $x(1+\log(1/x))^j$ is bounded on $(0,1]$, the averaged
+domination, so their weighted contribution $O(ne^{-J}(1+N_J)^j)$ is bounded
+uniformly in $J$. Since $x(1+\log(1/x))^j$ is bounded on $(0,1]$, the averaged
 quotient has uniformly bounded jets and equals $1$ at $s=0$, so its
 logarithm has uniformly bounded jets. Hence
-$\kappa_j(T_J)=N_J\kappa_j(\tau)+O(1)$ uniformly, and $J/N_J=F+O(J^{-1})$.
+$\kappa_j(T_J)=N_J\kappa_j(\tau)+O(1)$ uniformly. Finally,
+$0\le N_J-J/F<1$ and $\kappa_j(\tau)$ is uniformly bounded, so
+$\kappa_j(T_J)=(J/F)\kappa_j(\tau)+O(1)$ uniformly.
 \end{proof}
 
 Without stationarity, the initial law can put weight on a phase from which
@@ -1234,13 +1279,18 @@ manuscript.
 
 \section*{Data availability}
 Code that checks the formulas and inequalities of this paper numerically,
-and the scripts that produce the figures, are provided as supplementary
-material.
+and the scripts that produce the figures, are available at
+\url{https://github.com/brandonlign/first-passage}.
 
 \begin{thebibliography}{99}\small
 \bibitem{bs} A. C. Barato and U. Seifert, Skewness and kurtosis in
 statistical kinetics, \emph{Phys. Rev. Lett.} \textbf{115} (2015) 188103.
 \href{https://doi.org/10.1103/PhysRevLett.115.188103}{doi:10.1103/PhysRevLett.115.188103}
+
+\bibitem{bstur} A. C. Barato and U. Seifert, Thermodynamic uncertainty
+relation for biomolecular processes, \emph{Phys. Rev. Lett.} \textbf{114}
+(2015) 158101.
+\href{https://doi.org/10.1103/PhysRevLett.114.158101}{doi:10.1103/PhysRevLett.114.158101}
 
 \bibitem{ey} A. Eremenko and P. Yuditskii, Comb functions, in \emph{Recent
 Advances in Orthogonal Polynomials, Special Functions, and Their
@@ -1252,6 +1302,11 @@ uncertainty relations for first-passage times of counting observables,
 \emph{Phys. Rev. E} \textbf{95} (2017) 032134.
 \href{https://doi.org/10.1103/PhysRevE.95.032134}{doi:10.1103/PhysRevE.95.032134}
 
+\bibitem{gingrich} T. R. Gingrich, J. M. Horowitz, N. Perunov and J. L.
+England, Dissipation bounds all steady-state current fluctuations,
+\emph{Phys. Rev. Lett.} \textbf{116} (2016) 120601.
+\href{https://doi.org/10.1103/PhysRevLett.116.120601}{doi:10.1103/PhysRevLett.116.120601}
+
 \bibitem{gh} T. R. Gingrich and J. M. Horowitz, Fundamental bounds on first
 passage time fluctuations for currents, \emph{Phys. Rev. Lett.} \textbf{119}
 (2017) 170601.
@@ -1260,6 +1315,11 @@ passage time fluctuations for currents, \emph{Phys. Rev. Lett.} \textbf{119}
 \bibitem{petkov} S. Petkov, A sharp lower bound for entropy first-passage
 skewness in a three-state Markov ring, Hexagon preprint
 hexagon:2611.00566v1 (2026). \url{https://hexagonmath.org/2611.00566v1}
+
+\bibitem{neri} I. Neri, Martingale approach for first-passage problems of
+time-additive observables in Markov processes, \emph{J. Phys. A: Math.
+Theor.} \textbf{58} (2025) 145002.
+\href{https://doi.org/10.1088/1751-8121/adbfe2}{doi:10.1088/1751-8121/adbfe2}
 
 \bibitem{pbs} P. Pietzonka, A. C. Barato and U. Seifert, Universal bounds on
 current fluctuations, \emph{Phys. Rev. E} \textbf{93} (2016) 052145.
@@ -1270,6 +1330,10 @@ topology-dependent bound on current fluctuations, \emph{J. Phys. A: Math.
 Theor.} \textbf{49} (2016) 34LT01.
 \href{https://doi.org/10.1088/1751-8113/49/34/34LT01}{doi:10.1088/1751-8113/49/34/34LT01}
 
+\bibitem{ptaszynski} K. Ptaszy\'nski, Bounds on skewness and kurtosis of
+steady-state currents, \emph{Phys. Rev. E} \textbf{106} (2022) 024119.
+\href{https://doi.org/10.1103/PhysRevE.106.024119}{doi:10.1103/PhysRevE.106.024119}
+
 \bibitem{totik} V. Totik, Polynomial inverse images and polynomial
 inequalities, \emph{Acta Math.} \textbf{187} (2001) 139--160.
 \href{https://doi.org/10.1007/BF02392833}{doi:10.1007/BF02392833}
@@ -1278,6 +1342,12 @@ inequalities, \emph{Acta Math.} \textbf{187} (2001) 139--160.
 stochastic thermodynamics, \emph{J. Phys. A: Math. Theor.} \textbf{55}
 (2022) 014002.
 \href{https://doi.org/10.1088/1751-8121/ac3b0c}{doi:10.1088/1751-8121/ac3b0c}
+
+\bibitem{wierenga} H. Wierenga, P. R. ten Wolde and N. B. Becker,
+Quantifying fluctuations in reversible enzymatic cycles and clocks,
+\emph{Phys. Rev. E} \textbf{97} (2018) 042404.
+\href{https://doi.org/10.1103/PhysRevE.97.042404}{doi:10.1103/PhysRevE.97.042404}
+
 \end{thebibliography}
 
 \end{document}
